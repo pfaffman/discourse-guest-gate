@@ -78,7 +78,7 @@
       color: #787878;
     }
   </style>
-  {{login-buttons action="externalLogin"}}
+  {{login-buttons externalLogin=(action "externalLogin")}}
 {{/d-modal-body}}
 <div class="modal-footer">
   {{#if ssoEnabled}}
