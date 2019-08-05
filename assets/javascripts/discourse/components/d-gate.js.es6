@@ -5,6 +5,7 @@ export default DiscourseModal.extend({
   classNameBindings: [':gate'],
   attributeBindings: ['data-keyboard'],
 
+  dismissable: false,
   'data-keyboard': 'true',
 
   @on("didInsertElement")
@@ -14,10 +15,23 @@ export default DiscourseModal.extend({
         this.set('title', I18n.t(data.title));
       }
     });
+
+    $('html').on('keydown.discourse-modal', e => {
+      if ((e.which === 27) && $('.modal-header a.close').is(":visible")) {
+        Em.run.next(() => $('.modal-header a.close').click());
+      }
+    });
   },
 
   click(e) {
-    return true;
+    const $target = $(e.target);
+    if (($target.hasClass("modal-middle-container") ||
+        $target.hasClass("modal-outer-container")) &&
+	$('.modal-header a.close').is(":visible")) {
+      // Delegate click to modal close if clicked outside.
+      // We do this because some CSS of ours seems to cover
+      // the backdrop and makes it unclickable.
+      $('.modal-header a.close').click();
+    }
   }
-
 });
