@@ -14,6 +14,10 @@ export default DiscourseModal.extend({
       if (data.title) {
         this.set('title', I18n.t(data.title));
       }
+      $('html').addClass('gg-active');
+    });
+    this.appEvents.on('modal:body-dismissed', data => {
+      $('html').removeClass('gg-active');
     });
 
     $('html').on('keydown.discourse-modal', e => {
