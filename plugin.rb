@@ -3,4 +3,5 @@
 # version: 0.3
 # authors: Vinoth Kannan (vinothkannan@vinkas.com) and jgujgu and michael@discoursehosting.com
 # url: https://github.com/discoursehosting/discourse-guest-gate
-#
+
+enabled_site_setting :guest_gate_enabled
