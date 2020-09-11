@@ -5,3 +5,5 @@
 # url: https://github.com/discoursehosting/discourse-guest-gate
 
 enabled_site_setting :guest_gate_enabled
+
+register_asset "stylesheets/guest-gate.scss"
