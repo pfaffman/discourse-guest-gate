@@ -15,6 +15,7 @@ export default DiscourseModal.extend({
         this.set('title', I18n.t(data.title));
       }
       $('html').addClass('gg-active');
+      this._modalBodyShown(data);
     });
     this.appEvents.on('modal:body-dismissed', data => {
       $('html').removeClass('gg-active');
