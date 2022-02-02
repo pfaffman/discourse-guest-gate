@@ -1,4 +1,3 @@
-import { cleanDOM } from 'discourse/lib/clean-dom';
 import { startPageTracking } from 'discourse/lib/page-tracker';
 import { viewTrackingRequired } from 'discourse/lib/ajax';
 import showGate from 'discourse/plugins/guest-gate/discourse/lib/show-gate';
@@ -15,7 +14,6 @@ export default {
         // Tell our AJAX system to track a page transition
         const router = container.lookup('router:main');
         router.on('willTransition', viewTrackingRequired);
-        router.on('didTransition', cleanDOM);
 
         let appEvents = container.lookup('app-events:main');
         startPageTracking(router, appEvents);
